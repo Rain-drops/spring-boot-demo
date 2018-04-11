@@ -20,7 +20,7 @@ public class MtimeScheduled {
     @Autowired
     private Pipeline mysqlPipeline;
 
-    @Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0 0/100 * * * ?")
     public void getArticle(){
         Spider spider = OOSpider.create(new MtimeRepoPageProcessor())
                 .addUrl("http://news.mtime.com/2018/03/28/1579311.html")
