@@ -22,7 +22,7 @@
     <!-- root -->
     <root level="INFO">
         <appender-ref ref="console"/>
-        <appender-ref ref="rollingFile"/>
+        <!--<appender-ref ref="rollingFile"/>-->
     </root>
     <!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
     <logger name="org.springframework" level="INFO"/>
