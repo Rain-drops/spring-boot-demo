@@ -42,9 +42,9 @@ public class SpringBootDemoApplicationTests {
 
         try {
             ArticleMain articleMain = new ArticleMain();
-            articleMain.setArticleId("0x0003");
-            articleMain.setArticleAuthor("小杰3");
-            articleMain.setArticleTitle("呵呵3");
+            articleMain.setArticleId("0x0001");
+            articleMain.setArticleAuthor("小杰1");
+            articleMain.setArticleTitle("呵呵1");
             articleMain.setArticleUrl("http://");
             articleMain.setArticleClass("开心");
             articleMain.setArticleDate("2018-04-13");
@@ -65,13 +65,6 @@ public class SpringBootDemoApplicationTests {
     public void getArticleLoads() {
 
         try {
-
-            Set<String> collectionNames = mongoOperations.getCollectionNames();
-            for(String name : collectionNames){
-                System.out.println(name); // articleMain
-            }
-
-
             List<ArticleMain> articleMains =  mongoOperations.findAll(ArticleMain.class);
             for(ArticleMain mains : articleMains){
                 System.out.println(mains.getArticleTitle());

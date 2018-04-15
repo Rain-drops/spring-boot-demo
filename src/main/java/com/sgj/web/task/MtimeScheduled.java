@@ -21,7 +21,11 @@ public class MtimeScheduled {
     @Autowired
     private Pipeline elasticPipeline;
 
-    @Scheduled(cron = "0 0/100 * * * ?")
+    @Qualifier("MongodbPipeline")
+    @Autowired
+    private Pipeline mongodbPipeline;
+
+    @Scheduled(cron = "0/10 * * * * ?")
     public void getArticleElastic(){
         if(flag){
            return;
@@ -29,7 +33,8 @@ public class MtimeScheduled {
         flag = true;
         Spider spider = OOSpider.create(new MtimeRepoPageProcessor())
                 .addUrl("http://news.mtime.com/2018/03/28/1579311.html")
-                .addPipeline(elasticPipeline)
+//                .addPipeline(elasticPipeline)
+                .addPipeline(mongodbPipeline)
                 .setExitWhenComplete(true)
                 .setScheduler(new QueueScheduler());
         spider.start();
