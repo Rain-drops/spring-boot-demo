@@ -48,4 +48,13 @@ public class ArticleServiceImpl implements ArticleService {
 
         return jestService.getTotalCount(type, keyword);
     }
+
+    @Override
+    public void getArticleById(String articleId) throws Exception {
+
+        System.out.println("-=-=-=-=-=-=--=-=");
+
+    }
+
+
 }

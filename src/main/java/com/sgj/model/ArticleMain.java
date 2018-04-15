@@ -1,8 +1,11 @@
 package com.sgj.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 public class ArticleMain {
+    @Id
     private String articleId;
     private String articleTitle;
     private String articleClass;

@@ -1,6 +1,5 @@
 package com.sgj.web.task;
 
-import com.sgj.webmagic.pipeline.MysqlPipeline;
 import com.sgj.webmagic.processor.MtimeRepoPageProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,18 +15,25 @@ import us.codecraft.webmagic.scheduler.QueueScheduler;
 @EnableScheduling
 public class MtimeScheduled {
 
-    @Qualifier("MysqlPipeline")
+    private static volatile boolean flag = false;
+
+    @Qualifier("ElasticsearchPipeline")
     @Autowired
-    private Pipeline mysqlPipeline;
+    private Pipeline elasticPipeline;
 
     @Scheduled(cron = "0 0/100 * * * ?")
-    public void getArticle(){
+    public void getArticleElastic(){
+        if(flag){
+           return;
+        }
+        flag = true;
         Spider spider = OOSpider.create(new MtimeRepoPageProcessor())
                 .addUrl("http://news.mtime.com/2018/03/28/1579311.html")
-                .addPipeline(mysqlPipeline)
+                .addPipeline(elasticPipeline)
                 .setExitWhenComplete(true)
                 .setScheduler(new QueueScheduler());
         spider.start();
         spider.stop();
     }
+
 }

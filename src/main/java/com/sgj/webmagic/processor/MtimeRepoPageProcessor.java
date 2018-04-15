@@ -1,12 +1,11 @@
 package com.sgj.webmagic.processor;
 
 import com.sgj.web.enums.PlarformEnum;
-import com.sgj.webmagic.pipeline.MysqlPipeline;
+import com.sgj.webmagic.pipeline.ElasticsearchPipeline;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.model.OOSpider;
-import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import java.util.Date;
@@ -112,7 +111,7 @@ public class MtimeRepoPageProcessor extends BasePageProcessor {
     public static void main(String[] args) {
         Spider spider = OOSpider.create(new MtimeRepoPageProcessor())
                 .addUrl("http://news.mtime.com/2018/03/28/1579311.html")
-                .addPipeline(new MysqlPipeline())
+                .addPipeline(new ElasticsearchPipeline())
                 .setExitWhenComplete(true)
                 .setScheduler(new QueueScheduler());
         spider.start();

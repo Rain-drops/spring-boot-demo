@@ -11,4 +11,7 @@ public interface ArticleService {
     List<ArticleMain> getArticleDetailsList(int page, String articleId) throws Exception;
 
     double getTotalCount(int type, String keyword) throws Exception;
+
+    void getArticleById(String articleId) throws Exception;
+
 }

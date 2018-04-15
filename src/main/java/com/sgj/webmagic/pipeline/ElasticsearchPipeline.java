@@ -5,7 +5,6 @@ import com.sgj.dao.JestClientUtil;
 import com.sgj.dao.JestESDao;
 import com.sgj.service.JestESService;
 import com.sgj.utils.VariablePoolUtil;
-import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Component("MysqlPipeline")
-public class MysqlPipeline implements Pipeline {
+@Component("ElasticsearchPipeline")
+public class ElasticsearchPipeline implements Pipeline {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlPipeline.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ElasticsearchPipeline.class);
 
     @Autowired
     JestESService jestESService;
@@ -55,7 +54,5 @@ public class MysqlPipeline implements Pipeline {
         }catch (Exception e){
 
         }
-
-
     }
 }
